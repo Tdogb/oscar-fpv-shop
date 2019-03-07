@@ -1,0 +1,50 @@
+{% extends 'oscar/partials/nav_primary.html' %}
+{% load i18n %}
+{% load currency_filters %}
+{% load category_tags %}
+
+{#{% block nav_dropdown %}#}
+{#<ul id="browse" class="nav navbar-nav">#}
+{#    <li class="dropdown active {% if expand_dropdown %}open{% endif %}">#}
+{#        <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>#}
+{#            {% trans "Browse store" %}#}
+{#            <b class="caret"></b>#}
+{#        </a>#}
+{#        <ul class="dropdown-menu" data-navigation="dropdown-menu">#}
+{#            {% category_tree depth=2 as tree_categories %}#}
+{#            <li><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a></li>#}
+{#            {% if tree_categories %}#}
+{#                <li class="divider"></li>#}
+{#                {% for tree_category in tree_categories %}#}
+{#                    {% if tree_category.has_children %}#}
+{#                        <li class="dropdown-submenu">#}
+{#                        <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>#}
+{#                        <ul class="dropdown-menu">#}
+{#                    {% else %}#}
+{#                        <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>#}
+{#                    {% endif %}#}
+{#                 {% for close in tree_category.num_to_close %}#}
+{#                     </ul></li>#}
+{#                 {% endfor %}#}
+{#                {% endfor %}#}
+{#            {% endif %}#}
+{#            <li class="divider"></li>#}
+{#            {% block nav_dropdown_extra_items %}#}
+{#                <li><a href="{% url 'offer:list' %}">{% trans "Offers" %}</a></li>#}
+{#            {% endblock %}#}
+{#        </ul>#}
+{#    </li>#}
+{#    {% block nav_extra %}#}
+{#    {% endblock nav_extra %}#}
+{#</ul>#}
+{% block nav_extra %}
+    {{ block.super }}
+    {% category_tree depth=2 as tree_categories %}
+    {% for tree_category in tree_categories %}
+        <p>{{ tree_category.name }}</p>
+    <li>
+        <a href="{{ tree_category.get_absolute.url }}">{{ tree_category.get_absolute_url }}</a>
+    </li>
+    {% endfor %}
+{% endblock %}
+{#{% endblock nav_dropdown %}#}
