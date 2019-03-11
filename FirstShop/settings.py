@@ -28,8 +28,8 @@ SECRET_KEY = 'f1ai8ge0yk-j**va)7z37g3=tjn_rx0$ka$0xaif(m4jf3j)mw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-USE_LESS = True
-OSCAR_USE_LESS = True
+# USE_LESS = True
+# OSCAR_USE_LESS = True
 
 ALLOWED_HOSTS = []
 
@@ -70,7 +70,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            location('templates'),
+            os.path.join(BASE_DIR, 'templates'),
+            # location('templates'),
             OSCAR_MAIN_TEMPLATE_DIR,
         ],
         'APP_DIRS': True,
@@ -93,7 +94,8 @@ TEMPLATES = [
 
 
 TEMPLATE_DIRS = (
-    location('templates'),
+    # location('templates'),
+    os.path.join(BASE_DIR, 'templates'),
     OSCAR_MAIN_TEMPLATE_DIR,
 )
 
@@ -106,7 +108,7 @@ WSGI_APPLICATION = 'FirstShop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, '../../db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ATOMIC_REQUESTS': True,
     }
 }

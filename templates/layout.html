@@ -9,7 +9,7 @@
         settings file. This will enable the on-the-fly less compiler.
     {% endcomment %}
     {% if use_less %}
-        <link rel="stylesheet/less" type="text/css" href="{{ STATIC_URL }}oscar/less/styles.less" />
+        <link rel="stylesheet/less" type="text/css" href="{% static "oscar/css/styles.less"%}" />
     {% else %}
         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css"%}" />
     {% endif %}
