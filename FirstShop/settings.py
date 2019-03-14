@@ -28,8 +28,8 @@ SECRET_KEY = 'f1ai8ge0yk-j**va)7z37g3=tjn_rx0$ka$0xaif(m4jf3j)mw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# USE_LESS = True
-# OSCAR_USE_LESS = True
+USE_LESS = False
+OSCAR_USE_LESS = False
 
 ALLOWED_HOSTS = []
 
@@ -161,11 +161,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+#
+# STATIC_ROOT = 'FirstShop/'
 
-STATIC_ROOT = 'FirstShop/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-STATICFILES_FINDERS = {
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-}
+MEDIA_URL = '/images/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+# STATICFILES_FINDERS = {
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# }
+#
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)

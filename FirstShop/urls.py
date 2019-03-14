@@ -4,6 +4,8 @@ from oscar.app import application as shop
 from paypal.express.dashboard.app import application
 from django.utils.translation import ugettext_lazy as _
 from oscar.defaults import OSCAR_DASHBOARD_NAVIGATION
+from django.conf.urls.static import static
+from django.conf import settings
 
 OSCAR_DASHBOARD_NAVIGATION.append(
     {
@@ -27,4 +29,4 @@ urlpatterns = [
     url(r'^checkout/paypal/', include('paypal.express.urls')),
     url(r'^dashboard/paypal/express/', application.urls),
     url(r'', shop.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
