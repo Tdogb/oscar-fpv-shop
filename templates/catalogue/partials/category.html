@@ -13,6 +13,6 @@
 {#            {% endthumbnail %}#}
         {% endwith %}
     </div>
-    <h3><a href="{{ category.get_absolute_url }}" title="{{ category.name }}">{{ category.name|truncatewords:4 }}</a></h3>
+    <h3><a href="{{ category.get_absolute_url }}" title="{{ category }}">{{ category.name|truncatewords:4 }}</a></h3>
 </article>
 {% endblock %}
