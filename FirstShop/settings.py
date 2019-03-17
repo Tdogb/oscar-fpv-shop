@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'compressor',
     'widget_tweaks',
     'paypal',
-] + get_core_apps()
+] + get_core_apps(['catalogue'])
 
 SITE_ID = 1
 
