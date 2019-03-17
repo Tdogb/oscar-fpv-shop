@@ -179,4 +179,5 @@ COMPRESS_OFFLINE_CONTEXT = {
 }
 STATICFILES_FINDERS = {
     'django.contrib.staticfiles.finders.FileSystemFinder',
+    'compressor.finders.CompressorFinder',
 }

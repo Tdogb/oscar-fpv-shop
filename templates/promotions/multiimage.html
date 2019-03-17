@@ -1,5 +1,14 @@
 {% if promotion.images %}
-    <div class="sidebar col-sm-4 col-md-3"></div>
+    <aside class="sidebar col-sm-4 col-md-3">
+    <div id="promotions_left">
+        <div class="list-group">
+            {% for promotion_image in promotion.images.all %}
+                <a href="#" class="list-group-item list-group-item-active">{{ promotion_image.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+    </aside>
+    <div class="col-sm-8 col-md-9">
     <div id="{{ promotion.name|slugify }}" class="carousel slide">
     <ol class="carousel-indicators">
         {% for promotion_image in promotion.images.all %}
@@ -22,4 +31,5 @@
     <a class="carousel-control left" href="#{{ promotion.name|slugify }}" data-slide="prev">&lsaquo;</a>
     <a class="carousel-control right" href="#{{ promotion.name|slugify }}" data-slide="next">&rsaquo;</a>
 </div>
+    </div>
 {% endif %}
