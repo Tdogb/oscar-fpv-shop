@@ -48,6 +48,9 @@
                             {% if tree_categories %}
                                 <li class="divider"></li>
                                     <a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All products" %}</a>
+                                    {% for product in products %}
+                                        <p>{{ product }}</p>
+                                    {% endfor %}
 {#                                {% for tree_category, info in tree_categories %}#}
 {#                                    {% if info.has_children %}#}
 {#                                        <li class="dropdown-submenu">#}
@@ -77,4 +80,5 @@
             {% include "partials/search.html" %}
         </div><!-- /navbar-collapse -->
     </div>
+{#<div id="django-debug"><pre>{% debug %}</pre></div>#}
 </div><!-- /navbar -->

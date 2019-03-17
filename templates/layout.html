@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load static %}
 {% load promotion_tags %}
 
 {% block styles %}
@@ -9,10 +10,9 @@
         settings file. This will enable the on-the-fly less compiler.
     {% endcomment %}
     {% if use_less %}
-        <p>hello</p>
-        <link rel="stylesheet/less" type="text/css" href="{% static "oscar/less/styles.less"%}" />
+        <link rel="stylesheet/less" type="text/less" href="{% static "oscar/less/styles.less"%}" />
     {% else %}
-        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css"%}" />
+        <link rel="stylesheet" type="text/css" href="{% static "/oscar/css/styles.css"%}" />
     {% endif %}
     <link rel="stylesheet" href="{% static 'oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css'%}"/>
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/datetimepicker.css" %}" />

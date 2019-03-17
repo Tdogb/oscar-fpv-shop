@@ -6,6 +6,10 @@ from django.utils.translation import ugettext_lazy as _
 from oscar.defaults import OSCAR_DASHBOARD_NAVIGATION
 from django.conf.urls.static import static
 from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.static import serve
+from django.urls import re_path
+
 
 OSCAR_DASHBOARD_NAVIGATION.append(
     {
@@ -28,5 +32,10 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^checkout/paypal/', include('paypal.express.urls')),
     url(r'^dashboard/paypal/express/', application.urls),
+    # url(r'^static/(?P<path>.*)$', serve(request=)),
+    re_path(r'^static/(?P<path>.*)$', serve, {
+        'document_root': settings.COMPRESS_ROOT,
+    }),
     url(r'', shop.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

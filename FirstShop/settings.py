@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import oscar
 from oscar.defaults import *
 from oscar import OSCAR_MAIN_TEMPLATE_DIR
 from oscar import get_core_apps
@@ -161,16 +162,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-#
-# STATIC_ROOT = 'FirstShop/'
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
-# STATICFILES_FINDERS = {
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-# }
-#
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+COMPRESS_ENABLED = True
+COMPRESS_PRECOMPILERS = (
+    ('text/less', 'lessc {infile} {outfile}'),
+)
+COMPRESS_OFFLINE_CONTEXT = {
+    # this is the only default value from compressor itself
+    'STATIC_URL': STATIC_URL,
+    'use_less': USE_LESS,
+}
+STATICFILES_FINDERS = {
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+}
