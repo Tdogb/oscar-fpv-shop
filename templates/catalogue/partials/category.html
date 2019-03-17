@@ -2,16 +2,17 @@
 {% load i18n %}
 {% load display_tags %}
 {% load staticfiles %}
+{% load category_tags %}
 
-{% block context %}
+{% block category %}
 <article class="product_pod">
     <div class="image_container">
-        {% with image=category.primary_image %}
-            {% thumbnail image.original "x155" upscale=False as thumb %}
-                <a href="{{ category.get_absolute_url }}"><img src="{{ thumb.url }}" alt="{{ category.name }}" class="thumbnail"></a>
-            {% endthumbnail %}
+        {% with image=url %}
+{#            {% thumbnail image "x155" upscale=False as thumb %}#}
+                <a href="{{ category }}"><img src="{{ url }}" alt="{{ category.name }}" class="thumbnail"></a>
+{#            {% endthumbnail %}#}
         {% endwith %}
     </div>
-    <h3><a href="{{ product.get_absolute_url }}" title="{{ category.get_title }}">{{ category.name|truncatewords:4 }}</a></h3>
+    <h3><a href="{{ category.get_absolute_url }}" title="{{ category.name }}">{{ category.name|truncatewords:4 }}</a></h3>
 </article>
 {% endblock %}
