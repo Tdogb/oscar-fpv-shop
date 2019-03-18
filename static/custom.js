@@ -13,6 +13,5 @@
     for(let _target in target) {
         observer.observe(_target, config);
     }
-
 // }
 

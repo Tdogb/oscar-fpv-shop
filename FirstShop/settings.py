@@ -34,7 +34,8 @@ OSCAR_USE_LESS = False
 
 ALLOWED_HOSTS = []
 
-
+OSCAR_SHOP_NAME = 'FPV Store'
+OSCAR_SHOP_TAGLINE = 'Custom FPV Parts'
 # Application definition
 
 INSTALLED_APPS = [

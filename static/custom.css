@@ -4,3 +4,18 @@
 .body {
     background-color: green;
 }
+
+.category_header {
+    color: black;
+    font-size: 17px;
+    text-decoration: underline;
+}
+
+.basket-mini {
+    color:white;
+    display: inline;
+}
+
+.search-form {
+    display: block;
+}
