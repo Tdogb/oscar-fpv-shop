@@ -36,6 +36,7 @@ else:
 USE_LESS = False
 OSCAR_USE_LESS = False
 
+
 # SECURE_BROWSER_TYPE_NOSNIFF = True
 # SECURE_BROWSER_XSS_FILTER = True
 # SECURE_CONTENT_TYPE_NOSNIFF = True
@@ -203,3 +204,4 @@ django_heroku.settings(locals())
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
+
