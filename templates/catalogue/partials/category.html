@@ -9,7 +9,7 @@
     <div class="image_container">
         {% with image=url %}
 {#            {% thumbnail image "x155" upscale=False as thumb %}#}
-                <a href="{{ category.slug }}"><img src="{{ url }}" alt="{{ category.name }}" class="thumbnail"></a>
+                <a href="{{ 'catalogue/category/'|add:category.slug }}"><img src="{{ url }}" alt="{{ category.name }}" class="thumbnail"></a>
 {#            {% endthumbnail %}#}
         {% endwith %}
     </div>

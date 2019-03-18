@@ -24,15 +24,29 @@ location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'f1ai8ge0yk-j**va)7z37g3=tjn_rx0$ka$0xaif(m4jf3j)mw'
-
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
+
+if DEBUG:
+    SECRET_KEY = 'f1ai8ge0yk-j**va)7z37g3=tjn_rx0$ka$0xaif(m4jf3j)mw'
+else:
+    SECRET_KEY = os.environ['SECRET_KEY']
 
 USE_LESS = False
 OSCAR_USE_LESS = False
 
-ALLOWED_HOSTS = []
+# SECURE_BROWSER_TYPE_NOSNIFF = True
+# SECURE_BROWSER_XSS_FILTER = True
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+# CSRF_COOKIE_SECURE = True
+# X_FRAME_OPTIONS = 'DENY'
+# SESSION_COOKIE_SECURE = True
+
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+]
 
 OSCAR_SHOP_NAME = 'FPV Store'
 OSCAR_SHOP_TAGLINE = 'Custom FPV Parts'

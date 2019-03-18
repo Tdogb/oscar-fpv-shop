@@ -2,6 +2,7 @@
 {% load staticfiles %}
 {% load static %}
 {% load promotion_tags %}
+{% load compress %}
 
 {% block styles %}
     {% comment %}
@@ -14,6 +15,10 @@
     {% else %}
         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css"%}" />
     {% endif %}
+{#    {% compress css %}#}
+{#    <link href="{{ STATIC_URL }}less/styles.less" media="all" rel="stylesheet" type="text/less"/>#}
+{#    {% endcompress %}#}
+
     <link rel="stylesheet" type="text/css" href="{% static "custom.css"%}" />
     <link rel="stylesheet" href="{% static 'oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css'%}"/>
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/datetimepicker.css" %}" />
