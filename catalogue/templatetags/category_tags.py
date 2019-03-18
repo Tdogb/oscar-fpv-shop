@@ -50,5 +50,5 @@ def get_annotated_list(depth=None, parent=None):
         info['num_to_close'] = list(range(0, prev_depth - start_depth))
         info['has_children'] = prev_depth > prev_depth
     # info['primary_image'] = Category.primary_image()
-    print(annotated_categories)
+    # print(annotated_categories)
     return annotated_categories

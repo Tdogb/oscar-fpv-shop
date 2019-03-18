@@ -19,6 +19,6 @@ def render_category(context, category, url):
     context['category'] = category
     context['url'] = url
 
-    print("context['category']")
-    print(category)
+    # print("context['category']")
+    # print(category)
     return template_.render(context)
