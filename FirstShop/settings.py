@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'compressor',
     'widget_tweaks',
     'paypal',
+    'storages',
+    'boto3',
 ] + get_core_apps(['catalogue'])
 
 SITE_ID = 1
@@ -197,6 +199,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
+AWS_STORAGE_BUCKET_NAME = 'fpv-site-bucket'
+AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
+AWS_ACCESS_KEY_ID = os.environ['AWS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
+
+# Tell django-storages the domain to use to refer to static files.
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+MEDIAFILES_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -219,6 +231,7 @@ STATICFILES_FINDERS = {
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'compressor.finders.CompressorFinder',
 }
+
 django_heroku.settings(locals())
 import dj_database_url
 db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
