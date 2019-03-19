@@ -45,8 +45,7 @@ OSCAR_USE_LESS = False
 # SESSION_COOKIE_SECURE = True
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
-    'localhost',
+    '*'
 ]
 
 OSCAR_SHOP_NAME = 'FPV Store'
@@ -123,14 +122,30 @@ WSGI_APPLICATION = 'FirstShop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         'ATOMIC_REQUESTS': True,
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'ATOMIC_REQUESTS': True,
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'postgresql-reticulated-79105',
+        # 'USER': 'tdogbeard@gmail.com',
+        # 'PASSWORD': os.environ['HEROKU_PWD'],
+        # 'HOST': 'ec2-54-225-95-183.compute-1.amazonaws.com:5432/d7rd9vi6ekq5fv',
+        # 'PORT': '5432',
+        'NAME': 'd7rd9vi6ekq5fv',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'USER': 'xrpmciqlrdkxcj',
+        'PASSWORD': '73e25629448419acf94668060ccaa97c5e6264369f63d3eef41a796060682c85',
+        'HOST': 'ec2-54-225-95-183.compute-1.amazonaws.com',
+        'PORT': '5432',
+        'SSLMODE': 'require',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -201,6 +216,6 @@ STATICFILES_FINDERS = {
 import django_heroku
 django_heroku.settings(locals())
 
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# import dj_database_url
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
