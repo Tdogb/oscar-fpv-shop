@@ -15,6 +15,8 @@ import oscar
 from oscar.defaults import *
 from oscar import OSCAR_MAIN_TEMPLATE_DIR
 from oscar import get_core_apps
+import dj_database_url
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,7 +28,7 @@ location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     SECRET_KEY = 'f1ai8ge0yk-j**va)7z37g3=tjn_rx0$ka$0xaif(m4jf3j)mw'
@@ -131,14 +133,8 @@ WSGI_APPLICATION = 'FirstShop.wsgi.application'
 # }
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # 'NAME': 'postgresql-reticulated-79105',
-        # 'USER': 'tdogbeard@gmail.com',
-        # 'PASSWORD': os.environ['HEROKU_PWD'],
-        # 'HOST': 'ec2-54-225-95-183.compute-1.amazonaws.com:5432/d7rd9vi6ekq5fv',
-        # 'PORT': '5432',
-        'NAME': 'd7rd9vi6ekq5fv',
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd7rd9vi6ekq5fv',
         'USER': 'xrpmciqlrdkxcj',
         'PASSWORD': '73e25629448419acf94668060ccaa97c5e6264369f63d3eef41a796060682c85',
         'HOST': 'ec2-54-225-95-183.compute-1.amazonaws.com',
@@ -213,9 +209,9 @@ STATICFILES_FINDERS = {
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'compressor.finders.CompressorFinder',
 }
-import django_heroku
+
 django_heroku.settings(locals())
 
-# import dj_database_url
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
