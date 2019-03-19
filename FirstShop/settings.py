@@ -15,7 +15,7 @@ import oscar
 from oscar.defaults import *
 from oscar import OSCAR_MAIN_TEMPLATE_DIR
 from oscar import get_core_apps
-import dj_database_url
+
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -132,18 +132,23 @@ WSGI_APPLICATION = 'FirstShop.wsgi.application'
 #     }
 # }
 
+
+# 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+# 'NAME': os.environ['HEROKU_NAME'],
+# 'USER': os.environ['HEROKU_USER'],
+# 'PASSWORD': os.environ['HEROKU_PWD'],
+# 'HOST': os.environ['HEROKU_HOST'],
+# 'PORT': '5432',
+# 'SSLMODE': 'require',
+
 # 'ENGINE': 'django.db.backends.sqlite3',
 # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 # 'ATOMIC_REQUESTS': True,
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ['HEROKU_NAME'],
-        'USER': os.environ['HEROKU_USER'],
-        'PASSWORD': os.environ['HEROKU_PWD'],
-        'HOST': os.environ['HEROKU_HOST'],
-        'PORT': '5432',
-        'SSLMODE': 'require',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'ATOMIC_REQUESTS': True,
     }
 }
 
@@ -213,9 +218,10 @@ STATICFILES_FINDERS = {
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'compressor.finders.CompressorFinder',
 }
-
+print(DATABASES)
 django_heroku.settings(locals())
-
-
-db_from_env = dj_database_url.config(conn_max_age=500)
+import dj_database_url
+db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
+print(db_from_env)
 DATABASES['default'].update(db_from_env)
+print(DATABASES)
