@@ -199,11 +199,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 COMPRESS_ENABLED = True
 COMPRESS_PRECOMPILERS = (
@@ -218,10 +219,7 @@ STATICFILES_FINDERS = {
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'compressor.finders.CompressorFinder',
 }
-print(DATABASES)
 django_heroku.settings(locals())
 import dj_database_url
 db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
-print(db_from_env)
 DATABASES['default'].update(db_from_env)
-print(DATABASES)
