@@ -131,13 +131,17 @@ WSGI_APPLICATION = 'FirstShop.wsgi.application'
 #         'ATOMIC_REQUESTS': True,
 #     }
 # }
+
+# 'ENGINE': 'django.db.backends.sqlite3',
+# 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+# 'ATOMIC_REQUESTS': True,
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7rd9vi6ekq5fv',
-        'USER': 'xrpmciqlrdkxcj',
-        'PASSWORD': '73e25629448419acf94668060ccaa97c5e6264369f63d3eef41a796060682c85',
-        'HOST': 'ec2-54-225-95-183.compute-1.amazonaws.com',
+        'NAME': os.environ['HEROKU_NAME'],
+        'USER': os.environ['HEROKU_USER'],
+        'PASSWORD': os.environ['HEROKU_PWD'],
+        'HOST': os.environ['HEROKU_HOST'],
         'PORT': '5432',
         'SSLMODE': 'require',
     }
@@ -190,7 +194,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
