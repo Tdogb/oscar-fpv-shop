@@ -223,6 +223,7 @@ MEDIAFILES_LOCATION = 'images'
 MEDIA_URL = '/images/'
 # MEDIA_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 # MEDIA_ROOT = '/images/'
 
 # COMPRESS_ENABLED = True
