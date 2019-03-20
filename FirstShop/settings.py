@@ -221,10 +221,10 @@ STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 MEDIAFILES_LOCATION = 'images'
-# MEDIA_URL = '/images/'
-MEDIA_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
-MEDIA_ROOT = '/images/'
+MEDIA_URL = '/images/'
+# MEDIA_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+# MEDIA_ROOT = '/images/'
 
 # COMPRESS_ENABLED = True
 # COMPRESS_PRECOMPILERS = (
