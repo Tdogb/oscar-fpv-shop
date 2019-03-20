@@ -203,12 +203,13 @@ AWS_STORAGE_BUCKET_NAME = 'fpv-site-bucket'
 AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
 AWS_ACCESS_KEY_ID = os.environ['AWS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
+AWS_DEFAULT_ACL = 'None'
 
 # Tell django-storages the domain to use to refer to static files.
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
-MEDIAFILES_LOCATION = 'images'
-DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+
+
 
 STATIC_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -218,8 +219,12 @@ STATIC_ROOT = '/static/'
 STATICFILES_LOCATION = 'static'
 STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+MEDIAFILES_LOCATION = 'images'
+# MEDIA_URL = '/images/'
+MEDIA_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
+MEDIA_ROOT = '/images/'
 
 # COMPRESS_ENABLED = True
 # COMPRESS_PRECOMPILERS = (
