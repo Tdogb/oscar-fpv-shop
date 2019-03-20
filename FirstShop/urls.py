@@ -33,9 +33,9 @@ urlpatterns = [
     url(r'^checkout/paypal/', include('paypal.express.urls')),
     url(r'^dashboard/paypal/express/', application.urls),
     # url(r'^static/(?P<path>.*)$', serve(request=)),
-    re_path(r'^static/(?P<path>.*)$', serve, {
-        'document_root': settings.COMPRESS_ROOT,
-    }),
+    # re_path(r'^static/(?P<path>.*)$', serve, {
+    #     'document_root': settings.COMPRESS_ROOT,
+    # }),
     url(r'', shop.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

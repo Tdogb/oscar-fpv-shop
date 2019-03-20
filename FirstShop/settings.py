@@ -210,29 +210,31 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 MEDIAFILES_LOCATION = '/images/'
 DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/static/'
+# STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_LOCATION = 'static'
+STATICFILES_STORAGE = 'custom_storages.StaticStorage'
 
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 
-COMPRESS_ENABLED = True
-COMPRESS_PRECOMPILERS = (
-    ('text/less', 'lessc {infile} {outfile}'),
-)
-COMPRESS_OFFLINE_CONTEXT = {
-    # this is the only default value from compressor itself
-    'STATIC_URL': STATIC_URL,
-    'use_less': USE_LESS,
-}
-STATICFILES_FINDERS = {
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'compressor.finders.CompressorFinder',
-}
-
-django_heroku.settings(locals())
+# COMPRESS_ENABLED = True
+# COMPRESS_PRECOMPILERS = (
+#     ('text/less', 'lessc {infile} {outfile}'),
+# )
+# COMPRESS_OFFLINE_CONTEXT = {
+#     # this is the only default value from compressor itself
+#     'STATIC_URL': STATIC_URL,
+#     'use_less': USE_LESS,
+# }
+# STATICFILES_FINDERS = {
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'compressor.finders.CompressorFinder',
+# }
+# django_heroku.settings(locals())
 import dj_database_url
 db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
 DATABASES['default'].update(db_from_env)
