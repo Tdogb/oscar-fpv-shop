@@ -234,7 +234,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
 #     'django.contrib.staticfiles.finders.FileSystemFinder',
 #     'compressor.finders.CompressorFinder',
 # }
-# django_heroku.settings(locals())
+django_heroku.settings(locals(), staticfiles=False)
 import dj_database_url
 db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
 DATABASES['default'].update(db_from_env)
