@@ -231,9 +231,9 @@ OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 # }
 if LOCAL:
     from FirstShop import local_settings
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATIC_URL = 'static/'
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_URL = '/static/'
+    # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 else:
     AWS_STORAGE_BUCKET_NAME = 'fpv-site-bucket'
     AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2

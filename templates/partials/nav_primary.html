@@ -48,7 +48,7 @@
                             {% if tree_categories %}
                                 <li class="divider"></li>
                                     {% for category, info in tree_categories %}
-                                        <li><a tabindex="-1" href="{% url 'catalogue:index' %}">{{ category.name }}</a></li>
+                                        <li><a tabindex="-1" href="{{ '/catalogue/category/'|add:category.slug }}">{{ category.name }}</a></li>
                                     {% endfor %}
 {#                                {% for tree_category, info in tree_categories %}#}
 {#                                    {% if info.has_children %}#}
