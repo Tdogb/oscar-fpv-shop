@@ -29,7 +29,7 @@ location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)), '
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = True
-LOCAL = True
+LOCAL = False
 
 if DEBUG:
     SECRET_KEY = 'f1ai8ge0yk-j**va)7z37g3=tjn_rx0$ka$0xaif(m4jf3j)mw'
@@ -204,9 +204,8 @@ USE_TZ = True
 
 
 
-STATIC_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
+
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_ROOT = '/static/'
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -230,15 +229,16 @@ OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 #     'compressor.finders.CompressorFinder',
 # }
 if LOCAL:
-    from FirstShop import local_settings
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     STATIC_URL = '/static/'
-    # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+    STATIC_ROOT = os.path.join(BASE_DIR, 'testhello')
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 else:
     AWS_STORAGE_BUCKET_NAME = 'fpv-site-bucket'
     AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
     AWS_ACCESS_KEY_ID = os.environ['AWS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
+    STATIC_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
+    STATIC_ROOT = '/static/'
 
     # Tell django-storages the domain to use to refer to static files.
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
@@ -254,5 +254,3 @@ else:
     import dj_database_url
     db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
     DATABASES['default'].update(db_from_env)
-print(STATIC_URL)
-print(STATIC_ROOT)

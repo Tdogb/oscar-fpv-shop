@@ -32,10 +32,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^checkout/paypal/', include('paypal.express.urls')),
     url(r'^dashboard/paypal/express/', application.urls),
-    # url(r'^static/(?P<path>.*)$', serve(request=)),
-    # re_path(r'^static/(?P<path>.*)$', serve, {
-    #     'document_root': settings.COMPRESS_ROOT,
-    # }),
+    url(r'^static/(?P<path>.*)$', serve), re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT, }),
     url(r'', shop.urls),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.LOCAL:
+    # urlpatterns += url(r'^static/(?P<path>.*)$', serve), re_path(r'^static/(?P<path>.*)$', serve, {'document_root': settings.STATIC_ROOT, }),
+
+# urlpatterns += url(r'', shop.urls),

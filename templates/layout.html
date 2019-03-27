@@ -13,7 +13,8 @@
     {% if use_less %}
         <link rel="stylesheet/less" type="text/less" href="{% static "oscar/less/styles.less"%}" />
     {% else %}
-        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css"%}" />
+{#        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css"%}" />#}
+        <link rel="stylesheet" type="text/css" href="static/oscar/css/styles.css" />
     {% endif %}
 {#    {% compress css %}#}
 {#    <link href="{{ STATIC_URL }}less/styles.less" media="all" rel="stylesheet" type="text/less"/>#}
