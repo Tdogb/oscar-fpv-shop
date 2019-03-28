@@ -253,8 +253,8 @@ else:
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'images'
     OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
-    django_heroku.settings(locals(), staticfiles=False)
-    import dj_database_url
-    db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
-    DATABASES['default'].update(db_from_env)
+django_heroku.settings(locals(), staticfiles=False)
+import dj_database_url
+db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
+DATABASES['default'].update(db_from_env)
 
