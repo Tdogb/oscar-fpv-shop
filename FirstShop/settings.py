@@ -69,7 +69,7 @@ INSTALLED_APPS = [
     'oscar_invoices',
     'storages',
     'boto3',
-] + get_core_apps(['catalogue', 'order'])
+] + get_core_apps(['catalogue', 'order', 'promotions'])
 
 SITE_ID = 1
 
