@@ -1,13 +1,11 @@
 {% load i18n %}
 {% load product_list_tags %}
+{% load category_tags %}
 
 <p>test</p>
-{% product_list as pl %}
-<p>{{ pl }}</p>
-<p>{{ product_list_tags }}</p>
+{#{% product_list as pl %}#}
+{#<p>{{ pl }}</p>#}
+
 {% block content %}
-{% for promotion in promotions %}
-    <p>{{ promotion.name }}</p>
-    <p>test2</p>
-{% endfor %}
+
 {% endblock %}

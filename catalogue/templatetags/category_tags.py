@@ -38,7 +38,6 @@ def get_annotated_list(depth=None, parent=None):
         info['has_children'] = prev_depth is None or node_depth > prev_depth
         if prev_depth is not None and node_depth < prev_depth:
             info['num_to_close'] = list(range(0, prev_depth - node_depth))
-
         info = {'num_to_close': [],
                 'level': node_depth - start_depth}
         info['primary_image'] = Category.get_absolute_image_url(categories[0])

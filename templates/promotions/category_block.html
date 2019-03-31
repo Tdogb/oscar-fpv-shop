@@ -2,6 +2,7 @@
 {% load category_tags %}
 {% load category_render_tags %}
 {% load product_tags %}
+{% load product_list_tags %}
 
 <section class="well well-blank" id="categorySection">
     <div class="sub-header">
@@ -15,5 +16,9 @@
     </ul>
     <ul class="row">
 {#    Product lists go here#}
+        {% category_tree depth=2 as tree_categories %}
+        {% for category,info in tree_categories %}
+            <div class="category_detail">{% product_list category %}</div>
+        {% endfor %}
     </ul>
 </section>
