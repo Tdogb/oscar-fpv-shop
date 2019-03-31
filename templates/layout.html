@@ -62,6 +62,7 @@
                         {% for promotion in promotions_page %}
                             {% render_promotion promotion %}
                         {% endfor %}
+
                     </div>
                     {# Div exists for AJAX updates to entire content section #}
                     <div id="content_inner">{% block content %}{% endblock %}</div>

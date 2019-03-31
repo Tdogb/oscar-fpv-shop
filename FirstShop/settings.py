@@ -65,9 +65,11 @@ INSTALLED_APPS = [
     'compressor',
     'widget_tweaks',
     'paypal',
+    'gdstorage',
+    'oscar_invoices',
     'storages',
     'boto3',
-] + get_core_apps(['catalogue'])
+] + get_core_apps(['catalogue', 'order'])
 
 SITE_ID = 1
 
@@ -226,6 +228,7 @@ USE_TZ = True
 #     'django.contrib.staticfiles.finders.FileSystemFinder',
 #     'compressor.finders.CompressorFinder',
 # }
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = '/Users/19beard/Downloads/FPV-store-4146b8de6b6a.json'
 if LOCAL:
     MEDIA_URL = '/images/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'images')
@@ -253,8 +256,8 @@ else:
     DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
     MEDIAFILES_LOCATION = 'images'
     OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
-django_heroku.settings(locals(), staticfiles=False)
-import dj_database_url
-db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
-DATABASES['default'].update(db_from_env)
+    django_heroku.settings(locals(), staticfiles=False)
+    import dj_database_url
+    db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
+    DATABASES['default'].update(db_from_env)
 
