@@ -1,0 +1,1 @@
+sudo cp /Users/19beard/PycharmProjects/FirstShop/static/custom.js /Users/19beard/PycharmProjects/FirstShop/staticfiles/custom.js

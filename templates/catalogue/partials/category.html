@@ -5,14 +5,15 @@
 {% load category_tags %}
 
 {% block category %}
-<article class="product_pod">
-    <div class="image_container">
-        {% with image=url %}
-{#            {% thumbnail image "x155" upscale=False as thumb %}#}
-                <a href="{{ 'catalogue/category/'|add:category.slug }}"><img src="{{ url }}" alt="{{ category.name }}" class="thumbnail"></a>
-{#            {% endthumbnail %}#}
-        {% endwith %}
-    </div>
-    <h3><a class="category_header" href="{{ category.get_absolute_url }}" title="{{ category }}">{{ category.name|truncatewords:4 }}</a></h3>
-</article>
+{#    used to be product_pod#}
+    <article class="home-categories">
+        <div class="image_container">
+            {% with image=url %}
+    {#            {% thumbnail image "x155" upscale=False as thumb %}#}
+                    <a href="{{ 'catalogue/category/'|add:category.slug }}"><img src="{{ url }}" alt="{{ category.name }}" class="thumbnail"></a>
+    {#            {% endthumbnail %}#}
+            {% endwith %}
+        </div>
+        <h3><a class="category_header" href="{{ category.get_absolute_url }}" title="{{ category }}">{{ category.name|truncatewords:4 }}</a></h3>
+    </article>
 {% endblock %}

@@ -20,7 +20,7 @@ def product_list(context, category):
     dictionary = {
         'request': request,
         'products': products,
-        'promotion': category.name
+        'promotion': category.name,
     }
     print(dictionary)
     return template.render(request= request, context=dictionary)

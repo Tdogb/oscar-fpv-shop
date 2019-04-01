@@ -1,19 +1,14 @@
-let product_pods = document.getElementsByClassName('product_pod');
+console.log("activated");
 
-for(var i = 0; i < product_pods.length; i++) {
-    product_pods[i].addEventListener('onmouseover', function () {
-        console.log(event);
-        displayDetail(elem);
-    });
-    console.log("hi");
-}
+$(".home-categories").bind("mouseenter mouseleave", function () {
+    jQueryTest = jQuery(this).find("h3").text();
+    targetElement = $(".product_detail:first-child:first-child:contains(" + jQueryTest + ")");
+    targetElement.toggleClass("homehide", true);
+    $(".product_detail:first-child:first-child").not(targetElement).toggleClass("homehide", false)
+});
 
-function displayDetail(product) {
-    console.log(product);
-    product_pods[product].classList.toggle("show");
-    console.log("hi2");
-}
-
-$('#myDropdown').on('show.bs.dropdown', function () {
-
-})
+// $(".home-categories").bind("mouseout", function () {
+//     jQueryTest = jQuery(this).find("h3").text();
+//     targetElement = $(".product_detail:first-child:first-child:contains(" + jQueryTest + ")");
+//     targetElement.toggleClass("homehide", false);
+// });

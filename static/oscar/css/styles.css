@@ -3190,25 +3190,25 @@ fieldset[disabled] .btn-default.focus {
   background-color: #333;
 }
 .btn-primary {
-  color: #fff;
+  color: #333;
   background-color: #ffde00;
   border-color: #e6c800;
 }
 .btn-primary:focus,
 .btn-primary.focus {
-  color: #fff;
+  color: #333;
   background-color: #ccb200;
   border-color: #665900;
 }
 .btn-primary:hover {
-  color: #fff;
+  color: #333;
   background-color: #ccb200;
   border-color: #a89300;
 }
 .btn-primary:active,
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
-  color: #fff;
+  color: #333;
   background-color: #ccb200;
   background-image: none;
   border-color: #a89300;
@@ -3222,7 +3222,7 @@ fieldset[disabled] .btn-default.focus {
 .btn-primary:active.focus,
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
-  color: #fff;
+  color: #333;
   background-color: #a89300;
   border-color: #665900;
 }
@@ -3240,7 +3240,7 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-primary .badge {
   color: #ffde00;
-  background-color: #fff;
+  background-color: #333;
 }
 .btn-success {
   color: #fff;
@@ -8801,11 +8801,8 @@ input[type="number"][id*="quantity"] {
 .search-form {
   display: inline-block;
 }
-.product_detail {
-  display: block;
-}
-.show {
-  display: block;
+.homehide {
+  display: none;
 }
 .clearfix:before,
 .clearfix:after,
