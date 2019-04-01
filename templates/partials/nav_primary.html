@@ -5,7 +5,7 @@
 {% load i18n %}
 
 <div class="navbar primary navbar-static-top navbar-inverse">
-    <div class="container-fluid">
+    <div class="nav-fluid container-fluid">
         <div class="navbar-header pull-right">
             {# This is used in mobile view #}
             <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".primary-collapse">
@@ -36,7 +36,7 @@
             {% block nav_dropdown %}
                 <ul id="browse" class="nav navbar-nav">
 {#        HOME        #}
-                    <li class="nav_item"><a href="/">Home</a></li>
+                    <li class="nav_item"><a href="/">Boardhouse</a></li>
 {#        PRODUCTS        #}
                     <li class="dropdown active {% if expand_dropdown %}open{% endif %}">
                         <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>
