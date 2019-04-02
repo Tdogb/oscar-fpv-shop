@@ -30,14 +30,14 @@
     {% include "partials/nav_accounts.html" %}
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
-    <header class="header container-fluid">
-        <div class="page_inner">
-            <div class="row">
-                {% include "partials/brand.html" %}
+    <header class="header container-fluid" id="primary-header">
+{#        <div class="page_inner">#}
+{#            <div class="row">#}
+{#                {% include "partials/brand.html" %}#}
                 {# Mini-basket wrapped in a block so some templates can now display it #}
-
-            </div>
-        </div>
+{##}
+{#            </div>#}
+{#        </div>#}
         {% block navigation %}
             {% include "partials/nav_primary.html" %}
         {% endblock %}

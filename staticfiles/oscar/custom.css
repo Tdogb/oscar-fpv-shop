@@ -1,0 +1,16 @@
+#primary-header {
+
+}
+
+#primary-header .navbar{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#primary-header {
+  padding:0px;
+}
+
+.page-inner {
+  padding-top: 0px;
+}

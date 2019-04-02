@@ -7965,10 +7965,6 @@ a .icon-flip-vertical:before {
 .container-fluid {
   max-width: 1280px;
 }
-.header .container-fluid {
-  padding-right: 0;
-  padding-left: 0;
-}
 .row {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -8807,6 +8803,28 @@ input[type="number"][id*="quantity"] {
 }
 .homehide {
   display: none;
+}
+#primary-header .navbar {
+  padding: 0px;
+  display: block;
+  background-color: #000;
+  border: 0px;
+}
+#primary-header {
+  padding: 0px;
+  margin: 0px;
+}
+.page_inner {
+  padding-top: 0px;
+}
+#top_page {
+  margin-bottom: 0px;
+  background-color: #434343;
+  border: 0px;
+}
+#brand-logo {
+  background-color: #ffde00;
+  font-size: 200%;
 }
 .clearfix:before,
 .clearfix:after,

@@ -34,11 +34,11 @@
         </a>
         <div class="navbar-collapse primary-collapse collapse">
             {% block nav_dropdown %}
-                <ul id="browse" class="nav navbar-nav">
+                <ul id="browse" class="nav navbar-nav row">
 {#        HOME        #}
-                    <li class="nav_item"><a href="/">Boardhouse</a></li>
+                    <li class="nav_item col-lg-4 col-md-4" id="brand-logo"><a href="/">Boardhouse</a></li>
 {#        PRODUCTS        #}
-                    <li class="dropdown active {% if expand_dropdown %}open{% endif %}">
+                    <li class="dropdown active {% if expand_dropdown %}open{% endif %} col-lg-2 col-md-2">
                         <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>
                             Products
                             <b class="caret"></b>
@@ -76,9 +76,11 @@
                         </ul>
                     </li>
 {#        ABOUT        #}
-                    <li class="nav_item"><a href="/about.html">About</a></li>
+                    <li class="nav_item col-lg-2 col-md-2"><a href="/about.html">About</a></li>
                     {% include "partials/search.html" %}
-                    {% block mini_basket %}{% include "partials/mini_basket.html" %}{% endblock %}
+                    {% block mini_basket %}
+                        <li class="nav-item col-lg-2 col-md-2">{% include "partials/mini_basket.html" %}</li>
+                    {% endblock %}
                 </ul>
             {% endblock %}
 
