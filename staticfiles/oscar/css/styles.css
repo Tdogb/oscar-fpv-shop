@@ -8788,8 +8788,8 @@ input[type="number"][id*="quantity"] {
 .basket-mini {
   color: white;
   display: inline-block;
-  margin-top: 10px;
-  margin-right: 1px !important;
+  margin-right: 0px !important;
+  margin-left: 0 !important;
   right: 10px;
   vertical-align: middle;
 }
@@ -8804,18 +8804,24 @@ input[type="number"][id*="quantity"] {
 .homehide {
   display: none;
 }
+body .page {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+#primary-header {
+  margin: auto;
+  padding: 0px;
+}
 #primary-header .navbar {
   padding: 0px;
   display: block;
   background-color: #000;
   border: 0px;
 }
-#primary-header {
-  padding: 0px;
-  margin: 0px;
-}
 .page_inner {
   padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 #top_page {
   margin-bottom: 0px;
@@ -8825,6 +8831,17 @@ input[type="number"][id*="quantity"] {
 #brand-logo {
   background-color: #ffde00;
   font-size: 200%;
+  display: inline-block;
+}
+.navbar-form-custom {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.basket-span {
+  margin-left: 0 !important;
+}
+.nav-item-1 {
+  display: inline-block;
 }
 .clearfix:before,
 .clearfix:after,

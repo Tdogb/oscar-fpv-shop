@@ -4,31 +4,10 @@
 {% load product_list_tags %}
 {% load i18n %}
 
-
-{#<div class="container">#}
-{#    <div class="row">#}
-{#        <div class="col-lg-4" id="brand-logo">#}
-{#            Boardhouse#}
-{#        </div>#}
-{#        <div class="nav-item-1 col-lg-1" id="products">#}
-{#            Products#}
-{#        </div>#}
-{#        <div class="nav-item-1 col-lg-1" id="blogs">#}
-{#            Blogs#}
-{#        </div>#}
-{#        <div class="nav-item-1 col-lg-5" id="search-bar">#}
-{#            Search Bar ________#}
-{#        </div>#}
-{#        <div class="nav-item-1 col-lg-1" id="cart">#}
-{#            Cart#}
-{#        </div>#}
-{#    </div>#}
-{#</div>#}
-
 <div class="navbar primary navbar-static-top navbar-inverse">
     <div class="nav-fluid container-fluid">
         <div class="navbar-header pull-right">
-             This is used in mobile view
+            {# This is used in mobile view #}
             <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".primary-collapse">
                 <span>
                     <span class="icon-bar"></span>
@@ -56,9 +35,9 @@
         <div class="navbar-collapse primary-collapse collapse">
             {% block nav_dropdown %}
                 <ul id="browse" class="nav navbar-nav row">
-{#        HOME#}
+{#        HOME        #}
                     <li class="nav_item col-lg-4 col-md-4" id="brand-logo"><a href="/">Boardhouse</a></li>
-{#        PRODUCTS#}
+{#        PRODUCTS        #}
                     <li class="dropdown active {% if expand_dropdown %}open{% endif %} col-lg-2 col-md-2">
                         <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>
                             Products
@@ -72,23 +51,23 @@
                                     {% for category, info in tree_categories %}
                                         <li><a tabindex="-1" href="{{ '/catalogue/category/'|add:category.slug }}">{{ category.name }}</a></li>
                                     {% endfor %}
-                                {% for tree_category, info in tree_categories %}
-                                    {% if info.has_children %}
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
-                                            <ul class="dropdown-menu">
-                                            {% else %}
-                                                <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>
-                                            {% endif %}
-
-                                            {% for close in info.num_to_close %}
-                                                </ul></li>
-                                            {% endfor %}
-                                {% endfor %}
-                                {% for products in categories %}
-                                    <li><a>{{ products.name }}</a></li>
-                                    <li class="divider"></li>
-                                {% endfor %}
+{#                                {% for tree_category, info in tree_categories %}#}
+{#                                    {% if info.has_children %}#}
+{#                                        <li class="dropdown-submenu">#}
+{#                                            <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>#}
+{#                                            <ul class="dropdown-menu">#}
+{#                                            {% else %}#}
+{#                                                <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>#}
+{#                                            {% endif %}#}
+{##}
+{#                                            {% for close in info.num_to_close %}#}
+{#                                                </ul></li>#}
+{#                                            {% endfor %}#}
+{#                                {% endfor %}#}
+{#                                {% for products in categories %}#}
+{#                                    <li><a>{{ products.name }}</a></li>#}
+{#                                    <li class="divider"></li>#}
+{#                                {% endfor %}#}
                             {% endif %}
                             <li class="divider"></li>
                             {% block nav_dropdown_extra_items %}
@@ -96,7 +75,7 @@
                             {% endblock %}
                         </ul>
                     </li>
-{#        ABOUT#}
+{#        ABOUT        #}
                     <li class="nav_item col-lg-2 col-md-2"><a href="/about.html">About</a></li>
                     {% include "partials/search.html" %}
                     {% block mini_basket %}

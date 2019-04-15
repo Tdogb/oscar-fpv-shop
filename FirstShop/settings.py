@@ -237,27 +237,18 @@ if LOCAL:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
     OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
 else:
-    AWS_STORAGE_BUCKET_NAME = 'fpv-site-bucket'
-    AWS_S3_REGION_NAME = 'us-east-2'  # e.g. us-east-2
-    AWS_ACCESS_KEY_ID = os.environ['AWS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-
-    # STATIC_URL = 'http://fpv-site-bucket.s3.amazonaws.com/'
-    # STATIC_ROOT = '/static/'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    import custom_storages
+    MEDIA_URL = '/images/'
+    STATIC_URL = '/static/'
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-    STATICFILES_LOCATION = 'static'
-    # Tell django-storages the domain to use to refer to static files.
-    # STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-    MEDIA_URL = '/media/'
-    MEDIA_ROOT = 'http://fpv-site-bucket.s3.amazonaws.com/'
-    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
-    MEDIAFILES_LOCATION = 'images'
-    OSCAR_MISSING_IMAGE_URL = MEDIA_URL + 'image_not_found.jpg'
-    django_heroku.settings(locals(), staticfiles=False)
-    import dj_database_url
-    db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
-    DATABASES['default'].update(db_from_env)
+    DEFAULT_FILE_STORAGE = 'custom_storages.PublicAzureStorage'
+    MEDIA_ROOT = "https://fpvsiteuser.blob.core.windows.net/fpvsitecontainer/"
+
+    AZURE_CONTAINER = ""
+
+    # import dj_database_url
+    # db_from_env = dj_database_url.parse(url=os.environ['DATABASE_URL'])
+    # DATABASES['default'].update(db_from_env)
 

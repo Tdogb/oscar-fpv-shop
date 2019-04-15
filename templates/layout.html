@@ -5,23 +5,14 @@
 {% load compress %}
 
 {% block styles %}
-    {% comment %}
-        If you are developing Oscar's CSS, or overriding Oscar's CSS
-        files in your project, then set OSCAR_USE_LESS = True in your
-        settings file. This will enable the on-the-fly less compiler.
-    {% endcomment %}
     {% if use_less %}
         <link rel="stylesheet/less" type="text/less" href="{% static "oscar/less/styles.less"%}" />
     {% else %}
-{#        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css"%}" />#}
         <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
     {% endif %}
-{#    {% compress css %}#}
-{#    <link href="{{ STATIC_URL }}less/styles.less" media="all" rel="stylesheet" type="text/less"/>#}
-{#    {% endcompress %}#}
 
     <link rel="stylesheet" type="text/css" href="{% static "custom.css"%}" />
-    <link rel="stylesheet" href="{% static 'oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css'%}"/>
+{#    <link rel="stylesheet" href="{% static 'oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css'%}"/>#}
     <link rel="stylesheet" type="text/css" href="{% static "oscar/css/datetimepicker.css" %}" />
 {% endblock %}
 
@@ -38,6 +29,7 @@
 {##}
 {#            </div>#}
 {#        </div>#}
+        {% include "partials/header.html" %}
         {% block navigation %}
             {% include "partials/nav_primary.html" %}
         {% endblock %}
