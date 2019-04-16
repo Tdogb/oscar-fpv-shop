@@ -3,6 +3,78 @@
 {% load product_tags %}
 {% load product_list_tags %}
 {% load i18n %}
+{% load static %}
+
+<!-- Start Header Area -->
+	<header class="header_area sticky-header">
+		<div class="main_menu">
+			<nav class="navbar navbar-expand-lg navbar-light main_box">
+				<div class="container">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<a class="navbar-brand logo_h" href="/"><img src="{% static "img/logo.png" %}" alt=""></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+						<ul class="nav navbar-nav menu_nav ml-auto">
+							<li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Shop</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="category.html">Shop Category</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-product.html">Product Details</a></li>
+									<li class="nav-item"><a class="nav-link" href="checkout.html">Product Checkout</a></li>
+									<li class="nav-item"><a class="nav-link" href="cart.html">Shopping Cart</a></li>
+									<li class="nav-item"><a class="nav-link" href="confirmation.html">Confirmation</a></li>
+								</ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Blog</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+									<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>
+								</ul>
+							</li>
+							<li class="nav-item submenu dropdown">
+								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								 aria-expanded="false">Pages</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
+									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+								</ul>
+							</li>
+							<li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+							<li class="nav-item">
+								<button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div class="search_input" id="search_input_box">
+			<div class="container">
+				<form class="d-flex justify-content-between">
+					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
+					<button type="submit" class="btn"></button>
+					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+				</form>
+			</div>
+		</div>
+	</header>
+	<!-- End Header Area -->
+
+
 
 
 {#<div class="container">#}
@@ -25,87 +97,87 @@
 {#    </div>#}
 {#</div>#}
 
-<div class="navbar primary navbar-static-top navbar-inverse">
-    <div class="nav-fluid container-fluid">
-        <div class="navbar-header pull-right">
-             This is used in mobile view
-            <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".primary-collapse">
-                <span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </span>
-            </a>
-        </div>
-
-        <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">
-            <i class="icon-shopping-cart"></i>
-            {% trans "Basket" %}
-            {% if not request.basket.is_empty %}
-                {% if request.basket.is_tax_known %}
-                    {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}
-                        Total: {{ total }}
-                    {% endblocktrans %}
-                {% else %}
-                    {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}
-                        Total: {{ total }}
-                    {% endblocktrans %}
-                {% endif %}
-            {% endif %}
-        </a>
-        <div class="navbar-collapse primary-collapse collapse">
-            {% block nav_dropdown %}
-                <ul id="browse" class="nav navbar-nav row">
+{#<div class="navbar primary navbar-static-top navbar-inverse">#}
+{#    <div class="nav-fluid container-fluid">#}
+{#        <div class="navbar-header pull-right">#}
+{#             This is used in mobile view#}
+{#            <a class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target=".primary-collapse">#}
+{#                <span>#}
+{#                    <span class="icon-bar"></span>#}
+{#                    <span class="icon-bar"></span>#}
+{#                    <span class="icon-bar"></span>#}
+{#                </span>#}
+{#            </a>#}
+{#        </div>#}
+{##}
+{#        <a class="btn btn-default navbar-btn btn-cart navbar-right visible-xs-inline-block" href="{% url 'basket:summary' %}">#}
+{#            <i class="icon-shopping-cart"></i>#}
+{#            {% trans "Basket" %}#}
+{#            {% if not request.basket.is_empty %}#}
+{#                {% if request.basket.is_tax_known %}#}
+{#                    {% blocktrans with total=request.basket.total_incl_tax|currency:request.basket.currency %}#}
+{#                        Total: {{ total }}#}
+{#                    {% endblocktrans %}#}
+{#                {% else %}#}
+{#                    {% blocktrans with total=request.basket.total_excl_tax|currency:request.basket.currency %}#}
+{#                        Total: {{ total }}#}
+{#                    {% endblocktrans %}#}
+{#                {% endif %}#}
+{#            {% endif %}#}
+{#        </a>#}
+{#        <div class="navbar-collapse primary-collapse collapse">#}
+{#            {% block nav_dropdown %}#}
+{#                <ul id="browse" class="nav navbar-nav row">#}
 {#        HOME#}
-                    <li class="nav_item col-lg-4 col-md-4" id="brand-logo"><a href="/">Boardhouse</a></li>
+{#                    <li class="nav_item col-lg-4 col-md-4" id="brand-logo"><a href="/">Boardhouse</a></li>#}
 {#        PRODUCTS#}
-                    <li class="dropdown active {% if expand_dropdown %}open{% endif %} col-lg-2 col-md-2">
-                        <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>
-                            Products
-                            <b class="caret"></b>
-                        </a>
-                        <ul class="dropdown-menu" data-navigation="dropdown-menu">
-                            <li><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All" %}</a></li>
-                            {% category_tree depth=2 as tree_categories %}
-                            {% if tree_categories %}
-                                <li class="divider"></li>
-                                    {% for category, info in tree_categories %}
-                                        <li><a tabindex="-1" href="{{ '/catalogue/category/'|add:category.slug }}">{{ category.name }}</a></li>
-                                    {% endfor %}
-                                {% for tree_category, info in tree_categories %}
-                                    {% if info.has_children %}
-                                        <li class="dropdown-submenu">
-                                            <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>
-                                            <ul class="dropdown-menu">
-                                            {% else %}
-                                                <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>
-                                            {% endif %}
-
-                                            {% for close in info.num_to_close %}
-                                                </ul></li>
-                                            {% endfor %}
-                                {% endfor %}
-                                {% for products in categories %}
-                                    <li><a>{{ products.name }}</a></li>
-                                    <li class="divider"></li>
-                                {% endfor %}
-                            {% endif %}
-                            <li class="divider"></li>
-                            {% block nav_dropdown_extra_items %}
-                                <li><a href="{% url 'offer:list' %}">{% trans "Offers" %}</a></li>
-                            {% endblock %}
-                        </ul>
-                    </li>
+{#                    <li class="dropdown active {% if expand_dropdown %}open{% endif %} col-lg-2 col-md-2">#}
+{#                        <a href="#" class="dropdown-toggle" {% if not expand_dropdown %} data-toggle="dropdown"{% endif %}>#}
+{#                            Products#}
+{#                            <b class="caret"></b>#}
+{#                        </a>#}
+{#                        <ul class="dropdown-menu" data-navigation="dropdown-menu">#}
+{#                            <li><a tabindex="-1" href="{% url 'catalogue:index' %}">{% trans "All" %}</a></li>#}
+{#                            {% category_tree depth=2 as tree_categories %}#}
+{#                            {% if tree_categories %}#}
+{#                                <li class="divider"></li>#}
+{#                                    {% for category, info in tree_categories %}#}
+{#                                        <li><a tabindex="-1" href="{{ '/catalogue/category/'|add:category.slug }}">{{ category.name }}</a></li>#}
+{#                                    {% endfor %}#}
+{#                                {% for tree_category, info in tree_categories %}#}
+{#                                    {% if info.has_children %}#}
+{#                                        <li class="dropdown-submenu">#}
+{#                                            <a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a>#}
+{#                                            <ul class="dropdown-menu">#}
+{#                                            {% else %}#}
+{#                                                <li><a tabindex="-1" href="{{ tree_category.get_absolute_url }}">{{ tree_category.name }}</a></li>#}
+{#                                            {% endif %}#}
+{##}
+{#                                            {% for close in info.num_to_close %}#}
+{#                                                </ul></li>#}
+{#                                            {% endfor %}#}
+{#                                {% endfor %}#}
+{#                                {% for products in categories %}#}
+{#                                    <li><a>{{ products.name }}</a></li>#}
+{#                                    <li class="divider"></li>#}
+{#                                {% endfor %}#}
+{#                            {% endif %}#}
+{#                            <li class="divider"></li>#}
+{#                            {% block nav_dropdown_extra_items %}#}
+{#                                <li><a href="{% url 'offer:list' %}">{% trans "Offers" %}</a></li>#}
+{#                            {% endblock %}#}
+{#                        </ul>#}
+{#                    </li>#}
 {#        ABOUT#}
-                    <li class="nav_item col-lg-2 col-md-2"><a href="/about.html">About</a></li>
-                    {% include "partials/search.html" %}
-                    {% block mini_basket %}
-                        <li class="nav-item col-lg-2 col-md-2">{% include "partials/mini_basket.html" %}</li>
-                    {% endblock %}
-                </ul>
-            {% endblock %}
-
-        </div><!-- /navbar-collapse -->
-    </div>
+{#                    <li class="nav_item col-lg-2 col-md-2"><a href="/about.html">About</a></li>#}
+{#                    {% include "partials/search.html" %}#}
+{#                    {% block mini_basket %}#}
+{#                        <li class="nav-item col-lg-2 col-md-2">{% include "partials/mini_basket.html" %}</li>#}
+{#                    {% endblock %}#}
+{#                </ul>#}
+{#            {% endblock %}#}
+{##}
+{#        </div><!-- /navbar-collapse -->#}
+{#    </div>#}
 {#<div id="django-debug"><pre>{% debug %}</pre></div>#}
-</div><!-- /navbar -->
+{#</div><!-- /navbar -->#}

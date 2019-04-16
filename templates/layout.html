@@ -5,15 +5,17 @@
 {% load compress %}
 
 {% block styles %}
-    {% if use_less %}
-        <link rel="stylesheet/less" type="text/less" href="{% static "oscar/less/styles.less"%}" />
-    {% else %}
-        <link rel="stylesheet" type="text/css" href="{% static "oscar/css/styles.css" %}" />
-    {% endif %}
-
-    <link rel="stylesheet" type="text/css" href="{% static "custom.css"%}" />
-{#    <link rel="stylesheet" href="{% static 'oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css'%}"/>#}
-    <link rel="stylesheet" type="text/css" href="{% static "oscar/css/datetimepicker.css" %}" />
+	<link rel="stylesheet" href="{% static "css/linearicons.css" %}">
+	<link rel="stylesheet" href="{% static "css/font-awesome.min.css" %}">
+	<link rel="stylesheet" href="{% static "css/themify-icons.css" %}">
+	<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+	<link rel="stylesheet" href="{% static "css/owl.carousel.css" %}">
+	<link rel="stylesheet" href="{% static "css/nice-select.css" %}">
+	<link rel="stylesheet" href="{% static "css/nouislider.min.css" %}">
+	<link rel="stylesheet" href="{% static "css/ion.rangeSlider.css" %}" />
+	<link rel="stylesheet" href="{% static "css/ion.rangeSlider.skinFlat.css" %}" />
+	<link rel="stylesheet" href="{% static "css/magnific-popup.css" %}">
+	<link rel="stylesheet" href="{% static "css/main.css" %}">
 {% endblock %}
 
 {% block layout %}
@@ -22,13 +24,6 @@
 
     {# Site logo/title, mini-basket, browse dropdown and searchbox #}
     <header class="header container-fluid" id="primary-header">
-{#        <div class="page_inner">#}
-{#            <div class="row">#}
-{#                {% include "partials/brand.html" %}#}
-                {# Mini-basket wrapped in a block so some templates can now display it #}
-{##}
-{#            </div>#}
-{#        </div>#}
         {% include "partials/header.html" %}
         {% block navigation %}
             {% include "partials/nav_primary.html" %}
@@ -54,7 +49,6 @@
                         {% for promotion in promotions_page %}
                             {% render_promotion promotion %}
                         {% endfor %}
-
                     </div>
                     {# Div exists for AJAX updates to entire content section #}
                     <div id="content_inner">{% block content %}{% endblock %}</div>
@@ -78,14 +72,26 @@
 {% block scripts %}
     {{ block.super }}
     <!-- Twitter Bootstrap -->
-    <script src="{% static "oscar/js/bootstrap3/bootstrap.min.js" %}"></script>
-    <!-- Oscar -->
-    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>
-
-    <script src="{% static "oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" %}"></script>
-    <script src="{% static "oscar/js/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.all.js" %}"></script>
-    <script type="text/javascript" src="{% static "custom.js" %}"></script>
-
+{#    <script src="{% static "oscar/js/bootstrap3/bootstrap.min.js" %}"></script>#}
+{#    <!-- Oscar -->#}
+{#    <script src="{% static "oscar/js/oscar/ui.js" %}"></script>#}
+{##}
+{#    <script src="{% static "oscar/js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js" %}"></script>#}
+{#    <script src="{% static "oscar/js/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.all.js" %}"></script>#}
+    <script src="{% static "js/vendor/jquery-2.2.4.min.js"%}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="{% static "js/vendor/bootstrap.min.js"%}"></script>
+	<script src="{% static "js/jquery.ajaxchimp.min.js"%}"></script>
+	<script src="{% static "js/jquery.nice-select.min.js"%}"></script>
+	<script src="{% static "js/jquery.sticky.js"%}"></script>
+	<script src="{% static "js/nouislider.min.js"%}"></script>
+	<script src="{% static "js/countdown.js"%}"></script>
+	<script src="{% static "js/jquery.magnific-popup.min.js"%}"></script>
+	<script src="{% static "js/owl.carousel.min.js"%}"></script>
+	<!--gmaps Js-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+	<script src="{% static "js/gmaps.min.js"%}"></script>
+	<script src="{% static "js/main.js"%}"></script>
 {% endblock %}
 
 {% block extrascripts %}
