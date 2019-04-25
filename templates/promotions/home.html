@@ -23,7 +23,8 @@
 {% block content %}
     {% include 'promotions/category_block.html' %}
     <!-- start product Area -->
-    <section class="owl-carousel active-product-area section_gap">
+{#    <section class="owl-carousel active-product-area section_gap">#}
+    <section>
 		<!-- single product slide -->
 		<div class="single-product-slider">
 			<div class="container">
@@ -71,4 +72,8 @@
 
 {% block extrascripts %}
 
+{% endblock %}
+
+{% block onbodyload %}
+    $('.owl-carousel').owlCarousel();
 {% endblock %}
